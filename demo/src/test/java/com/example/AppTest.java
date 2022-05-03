@@ -13,6 +13,8 @@ import org.testng.annotations.Test;
  */
 public class AppTest 
 {
+    Playwright playwright = Playwright.create();
+
     /**
      * Rigorous Test :-)
      */
@@ -21,15 +23,7 @@ public class AppTest
     {
         Assert.assertEquals(1, 1);
     }
-    
-    /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void shouldFail()
-    {
-        Assert.assertEquals(2, 1);
-    }
+
 
     /**
      * Rigorous Test :-)
@@ -37,12 +31,25 @@ public class AppTest
     @Test
     public void playwright()
     {
-        Playwright playwright = Playwright.create();
-
             Browser browser = playwright.chromium().launch();
             //Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
             Page page = browser.newPage();
             page.navigate("http://playwright.dev");
             System.out.println(page.title());
+            Assert.assertEquals(page.title(), "Other Title");
+    }
+
+        /**
+     * Rigorous Test :-)
+     */
+    @Test
+    public void playwright2()
+    {
+            Browser browser = playwright.chromium().launch();
+            //Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+            Page page = browser.newPage();
+            page.navigate("http://playwright.dev");
+            System.out.println(page.title());
+            Assert.assertNotEquals(page.title(), "Other Title");
     }
 }
