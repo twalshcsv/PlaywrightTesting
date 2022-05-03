@@ -28,5 +28,11 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+    - name: Compile
+      shell: bash
+      run: |
+        npm install @playwright/test
+        PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers 
+        npx playwright install
     - name: Build with Maven
       run: mvn test --file demo/pom.xml
