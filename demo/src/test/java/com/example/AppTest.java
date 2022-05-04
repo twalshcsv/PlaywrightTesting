@@ -31,7 +31,7 @@ public class AppTest
     @Test
     public void playwright()
     {
-            Browser browser = playwright.chromium().launch();
+            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("msedge"));
             //Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
             Page page = browser.newPage();
             page.navigate("http://playwright.dev");
