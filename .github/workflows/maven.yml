@@ -31,7 +31,7 @@ jobs:
     - name: Compile
       shell: bash
       run: |
-        sudo apt install microsoft-edge-dev
+        sudo apt install microsoft-edge
         npm install @playwright/test
         PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers 
         npx playwright install
