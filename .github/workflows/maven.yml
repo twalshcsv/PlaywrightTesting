@@ -28,10 +28,10 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+    - uses: browser-actions/setup-edge@latest
     - name: Compile
       shell: bash
       run: |
-        sudo apt install microsoft-edge
         npm install @playwright/test
         PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers 
         npx playwright install
