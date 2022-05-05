@@ -28,7 +28,6 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - uses: browser-actions/setup-edge@latest
     - name: Compile
       shell: bash
       run: |
