@@ -4,8 +4,19 @@
 name: Maven Package
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      override:
+        description: 'Version Number'
+        required: true
+        default: '0.0.0'
+#on:
+#  release:
+#    types: [created]
 
 jobs:
   build:
