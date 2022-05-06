@@ -33,18 +33,8 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Compile
-      shell: bash
-      run: |
-        npm install @playwright/test
-        PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers 
-        npx playwright install
-    - name: Build with Maven
-      run: mvn test --file demo/pom.xml
     - name: Deploy to GitHub
-      run: mvn --batch-mode -DuseGitHubPackages=true deploy  --file demo/pom.xml
+      run: mvn  --file demo/pom.xml --batch-mode -DuseGitHubPackages=true deploy 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
